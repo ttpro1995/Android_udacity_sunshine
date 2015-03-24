@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    //field
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,11 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        //find reference to ListView
+
+
+
     }
 
 
@@ -78,11 +87,11 @@ public class MainActivity extends ActionBarActivity {
             String tmp[] ={
                     "Today - Sunny - 88/63",
             "Tomorrow - Foggy - 40/30",
-            "Web - Raining - 88/63</item>",
-            "Tue - Sunny - 40/30</item>",
-            "Thu - Foggy - 88/63</item>",
-            "Sat - Raining - 88/56</item>",
-            "Sun - Sunny - 23/63</item>"
+            "Web - Raining - 88/63",
+            "Tue - Sunny - 40/30",
+            "Thu - Foggy - 88/63",
+            "Sat - Raining - 88/56",
+            "Sun - Sunny - 23/63"
             };
 
             List<String> weekForecast = new ArrayList<String>(Arrays.asList(tmp));
@@ -91,7 +100,8 @@ public class MainActivity extends ActionBarActivity {
        // for (int i=0;i<arrayList.size();i++)
           //  Log.i("arrayList",arrayList.get(i));
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+            //create ArrayAdapter<String>
+            ArrayAdapter<String> mForecastAdapter = new ArrayAdapter<String>(
                     //Current context
                     getActivity(),
                     //id of List item layout
@@ -101,6 +111,11 @@ public class MainActivity extends ActionBarActivity {
                     //array which is forecast data
                     weekForecast);
 
+
+
+            //Set ArrayAdapter on ListView
+            ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
+            listView.setAdapter(mForecastAdapter);
 
             return rootView;
         }
