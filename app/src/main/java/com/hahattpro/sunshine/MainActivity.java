@@ -69,9 +69,11 @@ public class MainActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+            //use string-array in resource xml
           //  ArrayList<String> arrayList = new ArrayList<String>();
          //   Collections.addAll(arrayList,getResources().getStringArray(R.array.forecast_example));
 
+            //hardcode array into .java
             String tmp[] ={
                     "Today - Sunny - 88/63",
             "Tomorrow - Foggy - 40/30",
