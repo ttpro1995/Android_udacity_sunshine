@@ -2,4 +2,13 @@
     <string name="app_name">Sunshine</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string-array name="forecast_example">
+        <item>Today - Sunny - 88/63</item>
+        <item>Tomorrow - Foggy - 40/30</item>
+        <item>Web - Raining - 88/63</item>
+        <item>Tue - Sunny - 40/30</item>
+        <item>Thu - Foggy - 88/63</item>
+        <item>Sat - Raining - 88/56</item>
+        <item>Sun - Sunny - 23/63</item>
+    </string-array>
 </resources>
