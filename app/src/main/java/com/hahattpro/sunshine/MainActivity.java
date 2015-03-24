@@ -113,8 +113,10 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-            //Set ArrayAdapter on ListView
+            //set reference to listView
             ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
+
+            //bind Array Adapter to
             listView.setAdapter(mForecastAdapter);
 
             return rootView;
