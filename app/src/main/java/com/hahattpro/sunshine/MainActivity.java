@@ -12,9 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -66,8 +69,20 @@ public class MainActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            ArrayList<String> arrayList = new ArrayList<String>();
-            Collections.addAll(arrayList,getResources().getStringArray(R.array.forecast_example));
+          //  ArrayList<String> arrayList = new ArrayList<String>();
+         //   Collections.addAll(arrayList,getResources().getStringArray(R.array.forecast_example));
+
+            String tmp[] ={
+                    "Today - Sunny - 88/63",
+            "Tomorrow - Foggy - 40/30",
+            "Web - Raining - 88/63</item>",
+            "Tue - Sunny - 40/30</item>",
+            "Thu - Foggy - 88/63</item>",
+            "Sat - Raining - 88/56</item>",
+            "Sun - Sunny - 23/63</item>"
+            };
+
+            List<String> arrayList = new ArrayList<String>(Arrays.asList(tmp));
 
         for (int i=0;i<arrayList.size();i++)
             Log.i("arrayList",arrayList.get(i));
