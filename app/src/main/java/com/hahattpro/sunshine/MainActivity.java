@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ArrayAdapter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -84,10 +85,17 @@ public class MainActivity extends ActionBarActivity {
             "Sun - Sunny - 23/63</item>"
             };
 
-            List<String> arrayList = new ArrayList<String>(Arrays.asList(tmp));
+            List<String> weekForecast = new ArrayList<String>(Arrays.asList(tmp));
 
-        for (int i=0;i<arrayList.size();i++)
-            Log.i("arrayList",arrayList.get(i));
+               //for debug
+       // for (int i=0;i<arrayList.size();i++)
+          //  Log.i("arrayList",arrayList.get(i));
+
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_textview,
+                    weekForecast);
+
 
             return rootView;
         }
