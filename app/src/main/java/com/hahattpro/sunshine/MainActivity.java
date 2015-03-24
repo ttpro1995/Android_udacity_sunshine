@@ -91,9 +91,14 @@ public class MainActivity extends ActionBarActivity {
        // for (int i=0;i<arrayList.size();i++)
           //  Log.i("arrayList",arrayList.get(i));
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                    //Current context
+                    getActivity(),
+                    //id of List item layout
                     R.layout.list_item_forecast,
+                    //id of textview to popular
                     R.id.list_item_forecast_textview,
+                    //array which is forecast data
                     weekForecast);
 
 
