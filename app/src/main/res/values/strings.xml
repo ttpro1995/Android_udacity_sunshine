@@ -16,5 +16,5 @@
     <string name="set_location_title">Location</string>
     <string name="set_location_key" translatable="false">Location</string>
     <string name="set_location_default_value" translatable ="false">94043</string>
-
+    <string name="API_key">96799d246197a7df8922067d1814b142</string>
 </resources>

@@ -158,7 +158,11 @@ public class ForecastFragment extends Fragment {
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
 
+
+
             String highLowStr = roundedHigh + "/" + roundedLow;
+
+
             return highLowStr;
         }
 
@@ -259,15 +263,20 @@ public class ForecastFragment extends Fragment {
                 String FORECAST_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?";
                 String QUERY =  "q";
                 String FORMAT = "mode";
-                String UNIT = "unit";
+                String UNIT = "units";//unit co "s" nha
                 String DAY ="cnt";
+                String APPID = "APPID";
                 Uri uribuilder = Uri.parse(FORECAST_BASE_URL).buildUpon()
                                 .appendQueryParameter(QUERY,params[0])
                         .appendQueryParameter(FORMAT,format)
                         .appendQueryParameter(UNIT,unit)
-                        .appendQueryParameter(DAY,Integer.toString(Days)).build();
+                        .appendQueryParameter(DAY,Integer.toString(Days))
+                        .appendQueryParameter(APPID,getResources().getString(R.string.API_key))
+                        .build();
 
                 URL url = new URL (uribuilder.toString());
+
+                Log.e("URL",url.toString());
 
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
