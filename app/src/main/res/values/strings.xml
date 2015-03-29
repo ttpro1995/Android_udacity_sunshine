@@ -12,4 +12,9 @@
         <item>Sun - Sunny - 23/63</item>
     </string-array>
     <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="set_location_title">Location</string>
+    <string name="set_location_key" translatable="false">Location</string>
+    <string name="set_location_default_value" translatable ="false">94043</string>
+
 </resources>

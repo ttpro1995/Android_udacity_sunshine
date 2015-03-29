@@ -1,9 +1,11 @@
 package com.hahattpro.sunshine;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -46,9 +48,22 @@ public class ForecastFragment extends Fragment {
         setHasOptionsMenu(true); //Tell fragment that it have menu
         //there will not 3 dot, if your phone have menu button on hardware
         // in genymotion, press ctrl+M to show menu
-    }
-    @Override
 
+        updateWeather();
+    }
+
+    private void updateWeather()
+    {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        //contail number code or name of city
+        String Location  = pref.getString(getString(R.string.set_location_key),getString(R.string.set_location_default_value));
+
+        //default 94043
+        new FetchWeatherTask().execute(Location);
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.forecastfragment, menu);
@@ -58,8 +73,13 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            new FetchWeatherTask().execute("94043");
+            updateWeather();
             return true;
+        }
+        if (id==R.id.action_settings)
+        {
+            Intent intent = new Intent(getActivity(),SettingsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
