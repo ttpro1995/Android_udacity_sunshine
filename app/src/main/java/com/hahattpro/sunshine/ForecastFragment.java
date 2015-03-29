@@ -12,8 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -185,6 +187,7 @@ public class ForecastFragment extends Fragment {
                 String description;
                 String highAndLow;
 
+
                 // Get the JSON object representing the day
                 JSONObject dayForecast = weatherArray.getJSONObject(i);
 
@@ -310,7 +313,7 @@ public class ForecastFragment extends Fragment {
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
             ArrayList<String> weekForecast = new ArrayList<String>(Arrays.asList(strings));
-         ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>( //Current context
+         final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>( //Current context
                  getActivity(),
                  //id of List item layout
                  R.layout.list_item_forecast,
@@ -319,6 +322,22 @@ public class ForecastFragment extends Fragment {
                  //array which is forecast data
                  weekForecast);
             listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(LOG_TAG+" on Item Click","click "+position);
+                //remember to press refress so that FetchWeatherTask is execute
+                String forecast_str= parent.getItemAtPosition(position).toString();
+
+                Toast.makeText(
+                        getActivity(),//content
+                        forecast_str,//string for toast to display
+                        Toast.LENGTH_SHORT)//length of toast, short or long
+                        .show();//show() method must be call to show toast
+            }
+        });
+
         }
     } // end of Fetch
 }// end of ForecastFragment
