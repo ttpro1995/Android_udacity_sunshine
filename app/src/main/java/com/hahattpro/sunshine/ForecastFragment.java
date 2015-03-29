@@ -1,5 +1,6 @@
 package com.hahattpro.sunshine;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -335,7 +336,15 @@ public class ForecastFragment extends Fragment {
                         forecast_str,//string for toast to display
                         Toast.LENGTH_SHORT)//length of toast, short or long
                         .show();//show() method must be call to show toast
+                Intent intent = new Intent(getActivity(),DetailActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT,forecast_str);
+                startActivity(intent);
+
             }
+
+
+
+
         });
 
         }

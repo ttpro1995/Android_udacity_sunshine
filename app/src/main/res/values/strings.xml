@@ -11,4 +11,5 @@
         <item>Sat - Raining - 88/56</item>
         <item>Sun - Sunny - 23/63</item>
     </string-array>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
