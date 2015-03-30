@@ -49,6 +49,12 @@ public class ForecastFragment extends Fragment {
         //there will not 3 dot, if your phone have menu button on hardware
         // in genymotion, press ctrl+M to show menu
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         updateWeather();
     }
 
@@ -342,40 +348,47 @@ public class ForecastFragment extends Fragment {
         @Override
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
-            ArrayList<String> weekForecast = new ArrayList<String>(Arrays.asList(strings));
-         final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>( //Current context
-                 getActivity(),
-                 //id of List item layout
-                 R.layout.list_item_forecast,
-                 //id of textview to popular
-                 R.id.list_item_forecast_textview,
-                 //array which is forecast data
-                 weekForecast);
-            listView.setAdapter(arrayAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i(LOG_TAG+" on Item Click","click "+position);
-                //remember to press refress so that FetchWeatherTask is execute
-                String forecast_str= parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(
-                        getActivity(),//content
-                        forecast_str,//string for toast to display
-                        Toast.LENGTH_SHORT)//length of toast, short or long
-                        .show();//show() method must be call to show toast
-                Intent intent = new Intent(getActivity(),DetailActivity.class);
-                intent.putExtra(Intent.EXTRA_TEXT,forecast_str);
-                startActivity(intent);
+            ArrayList<String> weekForecast;
+            final ArrayAdapter<String> arrayAdapter;
 
+            try {
+                weekForecast = new ArrayList<String>(Arrays.asList(strings));
+                arrayAdapter = new ArrayAdapter<String>( //Current context
+                        getActivity(),
+                        //id of List item layout
+                        R.layout.list_item_forecast,
+                        //id of textview to popular
+                        R.id.list_item_forecast_textview,
+                        //array which is forecast data
+                        weekForecast);
+
+
+                listView.setAdapter(arrayAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Log.i(LOG_TAG + " on Item Click", "click " + position);
+                        //remember to press refress so that FetchWeatherTask is execute
+                        String forecast_str = parent.getItemAtPosition(position).toString();
+
+                        Toast.makeText(
+                                getActivity(),//content
+                                forecast_str,//string for toast to display
+                                Toast.LENGTH_SHORT)//length of toast, short or long
+                                .show();//show() method must be call to show toast
+                        Intent intent = new Intent(getActivity(), DetailActivity.class);
+                        intent.putExtra(Intent.EXTRA_TEXT, forecast_str);
+                        startActivity(intent);
+                    }
+                });
             }
-
-
-
-
-        });
-
+            catch (NullPointerException e)
+            {
+                Log.e(LOG_TAG,e.getMessage());
+            }
         }
     } // end of Fetch
 }// end of ForecastFragment
