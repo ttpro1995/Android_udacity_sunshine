@@ -274,6 +274,7 @@ public class ForecastFragment extends Fragment {
                 String DAY ="cnt";
                 String APPID = "APPID";
 
+                //select metric or imperial unit
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 unit = pref.getString(getString(R.string.unit_key),getString(R.string.unit_default));
 

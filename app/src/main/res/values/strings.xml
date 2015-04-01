@@ -22,6 +22,8 @@
     <string name="unit_key" translatable = "false">Unit</string>
     <string name="unit_default">Metric</string>
 
+    <string name="action_map">Map Location</string>
+
     <string-array name="unit_entryValus">
         <item>Imperial</item>
         <item>Metric</item>
