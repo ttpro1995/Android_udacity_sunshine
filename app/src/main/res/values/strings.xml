@@ -17,4 +17,18 @@
     <string name="set_location_key" translatable="false">Location</string>
     <string name="set_location_default_value" translatable ="false">94043</string>
     <string name="API_key">96799d246197a7df8922067d1814b142</string>
+
+    <string name="unit_title">Unit</string>
+    <string name="unit_key" translatable = "false">Unit</string>
+    <string name="unit_default">Metric</string>
+
+    <string-array name="unit_entryValus">
+        <item>Imperial</item>
+        <item>Metric</item>
+    </string-array>
+
+    <string-array name="unit_entries">
+        <item>Imperial</item>
+        <item>Metric</item>
+    </string-array>
 </resources>

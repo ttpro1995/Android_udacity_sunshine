@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
@@ -272,6 +273,10 @@ public class ForecastFragment extends Fragment {
                 String UNIT = "units";//unit co "s" nha
                 String DAY ="cnt";
                 String APPID = "APPID";
+
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                unit = pref.getString(getString(R.string.unit_key),getString(R.string.unit_default));
+
                 Uri uribuilder = Uri.parse(FORECAST_BASE_URL).buildUpon()
                                 .appendQueryParameter(QUERY,params[0])
                         .appendQueryParameter(FORMAT,format)
