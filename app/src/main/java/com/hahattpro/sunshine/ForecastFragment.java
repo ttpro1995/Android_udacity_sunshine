@@ -40,6 +40,8 @@ import java.util.List;
  * Created by haha on 3/24/2015.
  */
 public class ForecastFragment extends Fragment {
+
+    private String LOG_TAG = ForecastFragment.class.getSimpleName();
     public ForecastFragment() {
     }
     public ListView listView;
@@ -56,6 +58,7 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Log.i(LOG_TAG,"onStart");
         updateWeather();
     }
 
@@ -318,7 +321,7 @@ public class ForecastFragment extends Fragment {
                 }
                 forecastJsonStr = buffer.toString();
 
-                Log.i(LOG_TAG,forecastJsonStr);//log json string
+                Log.v(LOG_TAG,forecastJsonStr);//log json string
 
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);

@@ -24,6 +24,8 @@
 
     <string name="action_map">Map Location</string>
 
+    <string name="action_share">Share</string>
+
     <string-array name="unit_entryValus">
         <item>Imperial</item>
         <item>Metric</item>
