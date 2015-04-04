@@ -3,6 +3,7 @@ package com.hahattpro.sunshine;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by haha on 4/3/2015.
@@ -53,16 +54,19 @@ public class WeatherDbHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_WEATHER_TABLE);
 
+        Log.v("sql_weather",SQL_CREATE_WEATHER_TABLE);
+
         final String SQL_CREATE_LOCATION_TABLE = "CREATE TABLE " + WeatherContract.LocationEntry.TABLE_NAME + " (" +
 
                 WeatherContract.LocationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 // the ID of the location e
-                WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING+ " TEXT NOT NULL, "+
+                WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING+ " TEXT UNIQUE NOT NULL, "+
                 WeatherContract.LocationEntry.COLUMN_CITY_NAME+ " TEXT NOT NULL, "+
                 WeatherContract.LocationEntry.COLUMN_COORD_LAT+ " REAL NOT NULL, "+
                 WeatherContract.LocationEntry.COLUMN_COORD_LONG+ " REAL NOT NULL ) ; ";
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
+        Log.v("sql_location",SQL_CREATE_LOCATION_TABLE);
 
     }
 
