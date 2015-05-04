@@ -22,6 +22,9 @@
     <string name="unit_key" translatable = "false">Unit</string>
     <string name="unit_default">Metric</string>
 
+    <string name="pref_units_metric">Metric</string>
+    <string name="pref_units_imperial">Iperial</string>
+
     <string name="action_map">Map Location</string>
 
     <string name="action_share">Share</string>
