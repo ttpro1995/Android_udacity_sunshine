@@ -34,6 +34,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hahattpro.sunshine.MainActivity" />
         </activity>
+
+        <provider
+            android:authorities="com.hahattpro.sunshine.app"
+            android:name=".WeatherProvider"></provider>
     </application>
 
 </manifest>
