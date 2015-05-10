@@ -1,6 +1,7 @@
 package com.hahattpro.sunshine;
 
 
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -36,6 +37,11 @@ public class WeatherContract {
      */
     public static final class LocationEntry implements BaseColumns {
 
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_WEATHER;
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_WEATHER;
+
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_LOCATION).build();
 
         public static final String TABLE_NAME = "location";
@@ -54,7 +60,25 @@ public class WeatherContract {
     /* Inner class that defines the table contents of the weather table */
     public static final class WeatherEntry implements BaseColumns {
 
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_LOCATION;
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_LOCATION;
+
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_WEATHER).build();
+
+        public static Uri buildWeatherUri(long id)
+        {
+            Uri uri=null;
+            return ContentUris.withAppendedId(CONTENT_URI,id);
+        }
+
+        public static Uri buildWeatherLocationWithDate(String LOCATION_QUERY,long TEST_DATE)
+        {
+            Uri uri = null;
+            uri = CONTENT_URI.buildUpon().appendPath(LOCATION_QUERY).appendPath(Long.toString(normalizeDate(TEST_DATE))).build();
+            return uri;
+        }
 
         public static final String TABLE_NAME = "weather";
 
